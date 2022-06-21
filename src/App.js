@@ -1,25 +1,29 @@
-import React, { useState } from "react";
-import Question from "./components/Question";
-import Keypad from "./components/Keypad";
-import "./styles.css";
-import Answer from "./components/Answer";
+import React, { useState } from 'react';
+import './styles.css';
+import Answer from './components/Answer';
+import Keypad from './components/Keypad';
+import logic from './logic/logic';
+import Question from './components/Question';
 
 export default function App() {
-   const [displayAnswer, setDisplayAnswer] = useState(["0"]);
+    const [quiz, setQuiz] = useState({
+        question: ['5', '+', '3'],
+        answerCorrect: '8',
+        answerDisplay: 'Ready',
+        level: '1'
+    });
 
-   function keypadClicked(keyValue) {
-      if (keyValue === "del" || keyValue === "new") {
-         setDisplayAnswer(["0"]);
-      } else {
-         setDisplayAnswer([...displayAnswer, keyValue]);
-      }
-   }
+    function updateQuiz(keyPress) {
+        setQuiz(logic(quiz, keyPress));
+    }
 
-   return (
-      <div>
-         <Question displayAnswer={displayAnswer} />
-         <Answer displayAnswer={displayAnswer} />
-         <Keypad displayAnswer={displayAnswer} handleClick={keypadClicked} />
-      </div>
-   );
+    return (
+        <div className="app--container">
+            <div className="display">
+                <Question question={quiz.question} />
+                <Answer answerDisplay={quiz.answerDisplay} />
+            </div>
+            <Keypad upadateQuiz={updateQuiz} />
+        </div>
+    );
 }

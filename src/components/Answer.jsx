@@ -1,13 +1,5 @@
-import React from "react";
+import React from 'react';
 
-export default function Answer({ displayAnswer }) {
-   function typed(event) {
-      console.log(event.target.value);
-   }
-
-   return (
-      <p className="answer" onChange={typed}>
-         {displayAnswer}
-      </p>
-   );
+export default function Answer(props) {
+    return <p className="answer">{props.answerDisplay}</p>;
 }

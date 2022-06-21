@@ -1,34 +1,13 @@
-import React, { useState } from "react";
+import React from 'react';
 
 export default function Question(props) {
-   const [quiz, setQuiz] = useState({
-      question: ["Ready", ""],
-      operator: "",
-      answer: ""
-   });
-
-   function generateQuestion() {
-      const q1 = Math.floor(Math.random() * 100);
-      const q2 = Math.floor(Math.random() * 10);
-      const a = q1 + q2;
-
-      setQuiz({
-         question: [q1, q2],
-         operator: "+",
-         answer: a
-      });
-   }
-
-   return (
-      <div className="card">
-         <div className="question">
-            <p>{quiz.question[0]}</p>
-            <p>
-               {quiz.operator}
-               {quiz.question[1]}
-            </p>
-         </div>
-         <button onClick={generateQuestion}>Build New Quiz</button>
-      </div>
-   );
+    //map over all the questions and display them
+    // const displayQuestion = props.question.map((singleQuestion) => {
+    //     return;
+    // });
+    return (
+        <div className="question--card">
+            <span className="question--text">{[...props.question]}</span>
+        </div>
+    );
 }
