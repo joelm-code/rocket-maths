@@ -1,5 +1,4 @@
 import React from "react";
-import KeypadButton from "./KeypadButton";
 
 export default function Keypad(props) {
    const keypadButtons = [
@@ -17,14 +16,19 @@ export default function Keypad(props) {
       { id: "new", buttonNumber: "New" }
    ];
 
+   const styleClassName = "keypad--button";
+
    const buildButton = keypadButtons.map((keypadButton) => {
       return (
-         <KeypadButton
+         <button
+            className={styleClassName}
             key={keypadButton.id}
             keyValue={keypadButton.id}
             buttonNumber={keypadButton.buttonNumber}
-            handleClick={props.handleClick}
-         />
+            onClick={() => props.handleClick(keypadButton.id)}
+         >
+            {keypadButton.buttonNumber}
+         </button>
       );
    });
 

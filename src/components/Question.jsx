@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 export default function Question(props) {
    const [quiz, setQuiz] = useState({
-      question: ["q1", "q2"],
-      operator: "+",
-      answer: "this answer"
+      question: ["Ready", ""],
+      operator: "",
+      answer: ""
    });
 
    function generateQuestion() {
