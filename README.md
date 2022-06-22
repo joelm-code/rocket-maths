@@ -2,9 +2,14 @@
 
 A mental maths web application built in React that helps kids improve thier mental maths abilty
 
+## Demo
+
+![Rocket Maths Demo](https://github.com/joelm-code/rocket-maths/blob/main/devNotes/images/rocket-maths-version-1.gif)
+
 **Phase 1:**
 
--   Calculator like app that takes you through differnet levels of mental math difficulty
+-   Calculator like app that takes you through differnet levels of mental math difficult
+
 
 **Phase 2:**
 
