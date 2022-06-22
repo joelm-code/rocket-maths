@@ -7,6 +7,13 @@ import Question from './components/Question';
 
 export default function App() {
     const [quiz, setQuiz] = useState({
+        history: [
+            {
+                stepNumber: 1,
+                question: [''],
+                answerCorrect: ''
+            }
+        ],
         question: ['5', '+', '3'],
         answerCorrect: '8',
         answerDisplay: 'Ready',
