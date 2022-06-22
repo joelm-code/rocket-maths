@@ -10,7 +10,6 @@ A mental maths web application built in React that helps kids improve thier ment
 
 -   Calculator like app that takes you through differnet levels of mental math difficult
 
-
 **Phase 2:**
 
 -   An interactive codeAcademy like web application for math that takes you through a series of stories based math simulations that you can solve

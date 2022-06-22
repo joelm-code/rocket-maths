@@ -3,7 +3,7 @@ export default function updateHistory(quiz) {
 
     const lastStep = quiz.history.length;
 
-    console.log(quiz, lastStep);
+    //console.log(quiz, lastStep);
 
     newQuiz.history = [
         ...quiz.history,

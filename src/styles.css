@@ -78,3 +78,16 @@ body {
 .button--del {
     color: #ff7700;
 }
+
+.progressbar--backgound {
+    width: 230px;
+    max-width: 300px;
+    background-color: rgb(218, 218, 218);
+    border-radius: 8px;
+}
+
+.progressbar--front {
+    background-color: #222222;
+    height: 4px;
+    border-radius: 8px;
+}
