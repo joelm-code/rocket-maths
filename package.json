@@ -5,9 +5,11 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "framer-motion": "6.4.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "react-uuid": "1.0.2"
   },
   "devDependencies": {
     "@babel/runtime": "7.13.8",

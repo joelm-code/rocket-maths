@@ -10,19 +10,19 @@ export default function updateAnswerDisplay(quiz, keyPress) {
     switch (keyPress) {
         case '.': {
             if (!quiz.answerDisplay.find((item) => item === '.')) {
+                //add the keypress to the end of the newquiz
                 newQuiz.answerDisplay = [...newQuiz.answerDisplay, keyPress];
             }
             //console.log('dot');
             break;
         }
         case 'del': {
+            //clear the answer
             newQuiz.answerDisplay = [''];
-            //console.log('del');
             break;
         }
         default: {
             newQuiz.answerDisplay = [...newQuiz.answerDisplay, keyPress];
-            //console.log(keyPress);
         }
     }
 

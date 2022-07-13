@@ -24,7 +24,7 @@ export default function CalculatorPage() {
     }
 
     return (
-        <div className="calculatorPage">
+        <div className="calculatorPage" tabIndex={0} onKeyDown={(event) => updateQuiz(event.key)}>
             <CalculatorGame quiz={quiz} updateQuiz={updateQuiz} />
             <SideBar quiz={quiz} />
         </div>
