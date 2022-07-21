@@ -19,82 +19,10 @@ body {
     padding: 16px;
 }
 
-.topbar--logo {
-}
-
-.topbar--profile {
-}
-
 .app--container {
     height: 100vh;
     display: flex;
     flex-direction: column;
-}
-
-.calculatorGame--container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: rgb(0 0 0 / 10%) 0px 10px 15px -3px, rgb(0 0 0 / 5%) 0px 4px 6px -2px;
-    /* box-shadow: rgb(0 0 0 / 20%) 0px 20px 30px; */
-    border-radius: 16px;
-}
-
-.display {
-    flex: 1;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.question--card {
-    margin-top: 20px;
-    color: #ff7700;
-}
-
-.question--text {
-    font-size: 64px;
-    height: 90px;
-}
-
-.answer {
-    margin: 0px;
-    height: 90px;
-    text-align: center;
-    font-size: 56px;
-    font-weight: 300;
-    color: gray;
-}
-
-.keypad {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 5px;
-    aspect-ratio: 3/4;
-    width: 260px;
-}
-
-.keypad--button {
-    font-size: 24px;
-    color: white;
-
-    background-color: #222222;
-    border: 1px solid transparent;
-    border-radius: 4px;
-
-    justify-self: stretch;
-    align-self: stretch;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.button--del {
-    color: #ff7700;
 }
 
 .progressbar--backgound {
@@ -107,15 +35,6 @@ body {
     background-color: #222222;
     height: 4px;
     border-radius: 8px;
-}
-
-.calculatorPage {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
 }
 
 .sidebar {

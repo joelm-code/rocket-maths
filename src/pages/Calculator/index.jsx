@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import CalculatorGame from '../components/CalculatorGame/CalculatorGame';
-import SideBar from '../components/CalculatorGame/SideBar';
-import logic from '../logic/logic';
+import Question from './Question';
+import Answer from './Answer';
+import Keypad from '../../components/Keypad';
+
+import SideBar from '../../components/SideBar';
+import logic from '../../logic/logic';
+import './styles.css';
 
 export default function CalculatorPage() {
     const [quiz, setQuiz] = useState({
@@ -24,9 +28,13 @@ export default function CalculatorPage() {
     }
 
     return (
-        <div className="calculatorPage" tabIndex={0} onKeyDown={(event) => updateQuiz(event.key)}>
-            <CalculatorGame quiz={quiz} updateQuiz={updateQuiz} />
+        <div className="game--container" tabIndex={0} onKeyDown={(event) => updateQuiz(event.key)}>
             <SideBar quiz={quiz} />
+            <div className="game--display">
+                <Question question={quiz.question} />
+                <Answer answerDisplay={quiz.answerDisplay} />
+            </div>
+            <Keypad upadateQuiz={updateQuiz} />
         </div>
     );
 }
