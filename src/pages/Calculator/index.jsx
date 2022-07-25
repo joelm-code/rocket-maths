@@ -3,7 +3,7 @@ import Question from './Question';
 import Answer from './Answer';
 import Keypad from '../../components/Keypad';
 
-import SideBar from '../../components/SideBar';
+import ProgressCard from '../../components/ProgressCard';
 import logic from '../../logic/logic';
 import './styles.css';
 
@@ -29,7 +29,7 @@ export default function CalculatorPage() {
 
     return (
         <div className="game--container" tabIndex={0} onKeyDown={(event) => updateQuiz(event.key)}>
-            <SideBar quiz={quiz} />
+            <ProgressCard quiz={quiz} />
             <div className="game--display">
                 <Question question={quiz.question} />
                 <Answer answerDisplay={quiz.answerDisplay} />

@@ -9,7 +9,7 @@ export default function App() {
     return (
         <div className="app--container">
             <TopBar />
-            <SplittingPage />
+            <Calculator />
         </div>
     );
 }

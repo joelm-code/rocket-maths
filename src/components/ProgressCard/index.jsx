@@ -1,7 +1,7 @@
 import React from 'react';
 import ProgressBar from './ProgressBar';
 
-export default function Card({ quiz }) {
+export default function ProgressCard({ quiz }) {
     //console.log(...quiz.history);
     //console.log(quiz.totalSteps);
 
