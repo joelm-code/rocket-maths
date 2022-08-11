@@ -1,17 +1,11 @@
-import {
-  Box,
-  Stack,
-  Button,
-  Heading,
-  useColorModeValue,
-} from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import {Box, Stack, Button, Heading, useColorModeValue} from '@chakra-ui/react';
+import {Link} from 'react-router-dom';
 
-const Card = ({ title, action, path, disableAction, children }) => {
+const Card = ({title, action, path, disableAction, children}) => {
   return (
     <Box
       rounded={'lg'}
-      bg={useColorModeValue('white', 'gray.700')}
+      bg={useColorModeValue('whiteAlpha.600', 'gray.800')}
       boxShadow={'lg'}
       minW={'60'}
       p={8}

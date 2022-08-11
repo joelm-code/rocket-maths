@@ -7,6 +7,8 @@ import {
   HStack,
   VStack,
   Fade,
+  Wrap,
+  WrapItem,
 } from '@chakra-ui/react';
 import Card from '../components/Card';
 
@@ -31,37 +33,67 @@ export default function SimpleCard() {
           <Text fontSize={'lg'}>Select a level</Text>
         </Stack>
 
-        <VStack>
-          <HStack spacing={10}>
+        <Wrap justify="center" maxW={'5xl'}>
+          <WrapItem>
             <Fade in={true} transition={{enter: {duration: 0.5}}}>
-              <Card title="Easy" action="Begin" path="/calculator">
-                <Text>Add image here</Text>
+              <Card title="Easiest" action="Begin" path="/calculator">
+                <Text>Addition</Text>
               </Card>
             </Fade>
-
+          </WrapItem>
+          <WrapItem>
             <Fade in={true} transition={{enter: {duration: 1}}}>
               <Card title="Medium" action="Begin" path="/calculator">
-                <Text>image here</Text>
+                <Text>Mulitplication</Text>
               </Card>
             </Fade>
-          </HStack>
-        </VStack>
+          </WrapItem>
 
-        <VStack>
-          <HStack spacing={10}>
+          <WrapItem>
             <Fade in={true} transition={{enter: {duration: 1.5}}}>
               <Card title="Hard" action="Begin" path="/calculator">
-                <Text>Hard</Text>
+                <Text>Addition</Text>
               </Card>
             </Fade>
-
+          </WrapItem>
+          <WrapItem>
             <Fade in={true} transition={{enter: {duration: 2}}}>
               <Card title="Exteme" action="Begin" path="/calculator">
-                <Text>Extreme</Text>
+                <Text>Division</Text>
               </Card>
             </Fade>
-          </HStack>
-        </VStack>
+          </WrapItem>
+
+          <WrapItem>
+            <Fade in={true} transition={{enter: {duration: 0.5}}}>
+              <Card title="Easy" action="Begin" path="/calculator">
+                <Text>Addition</Text>
+              </Card>
+            </Fade>
+          </WrapItem>
+          <WrapItem>
+            <Fade in={true} transition={{enter: {duration: 1}}}>
+              <Card title="Medium" action="Begin" path="/calculator">
+                <Text>Multiplication</Text>
+              </Card>
+            </Fade>
+          </WrapItem>
+
+          <WrapItem>
+            <Fade in={true} transition={{enter: {duration: 1.5}}}>
+              <Card title="Hard" action="Begin" path="/calculator">
+                <Text>Addition</Text>
+              </Card>
+            </Fade>
+          </WrapItem>
+          <WrapItem>
+            <Fade in={true} transition={{enter: {duration: 2}}}>
+              <Card title="Exteme" action="Begin" path="/calculator">
+                <Text>Division</Text>
+              </Card>
+            </Fade>
+          </WrapItem>
+        </Wrap>
       </Stack>
     </Flex>
   );
