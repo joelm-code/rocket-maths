@@ -3,8 +3,7 @@ export default function updateHistory(quiz) {
 
     const lastStep = quiz.history.length;
 
-    //console.log(quiz, lastStep);
-
+    //Add the current history to the new array
     newQuiz.history = [
         ...quiz.history,
         {
@@ -15,5 +14,3 @@ export default function updateHistory(quiz) {
     ];
     return { ...newQuiz };
 }
-
-// console.log(newQuiz.history);

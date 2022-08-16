@@ -1,31 +1,38 @@
 export default function updateAnswerDisplay(quiz, keyPress) {
     let newQuiz = quiz;
 
-    //first time the quiz is loaded
+    //Ready is the text on display when the app is first loaded
+    // !!! Need to change this to something better
     if (newQuiz.answerDisplay === 'Ready') {
         newQuiz.answerDisplay = [];
     }
 
-    //check for . reapeat and del
     switch (keyPress) {
         case '.': {
+            //1. The answer doesn't contain another .
             if (!quiz.answerDisplay.find((item) => item === '.')) {
-                //add the keypress to the end of the newquiz
+                //2. Add . to the display
                 newQuiz.answerDisplay = [...newQuiz.answerDisplay, keyPress];
             }
-            //console.log('dot');
+            //3. Else just return it back
             break;
         }
         case 'del': {
-            //clear the answer
+            //Clears the entire display
             newQuiz.answerDisplay = [];
             break;
         }
+        case 'Backspace': {
+            //Clears only previous number
+            newQuiz.answerDisplay.pop();
+            break;
+        }
         default: {
+            //Everything else is added to the end of answerDisplay
             newQuiz.answerDisplay = [...newQuiz.answerDisplay, keyPress];
         }
     }
-
+    //Send back the updated newQuiz
     return {
         ...newQuiz
     };
