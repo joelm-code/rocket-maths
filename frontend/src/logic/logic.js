@@ -18,7 +18,7 @@ export default function logic(quiz, keyPress) {
             newQuiz = updateHistory(newQuiz);
             //builds a new question and sets a new answer
             newQuiz = buildQuestion(newQuiz, keyPress);
-            newQuiz.answerDisplay = [''];
+            newQuiz.answerDisplay = [];
         }
 
         //console.log(displayAnswer, newQuiz.answerCorrect);

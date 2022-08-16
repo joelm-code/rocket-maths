@@ -4,24 +4,25 @@ import Home from './pages/Home';
 import Levels from './pages/Levels';
 import Calculator from './pages/Calculator';
 import MainLayout from './layout/MainLayout';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import {ChakraProvider, theme} from '@chakra-ui/react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ChakraProvider, theme } from '@chakra-ui/react';
 
 function App() {
-  return (
-    <ChakraProvider theme={theme}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<MainLayout />}>
-            <Route path="" element={<Home />} />
-            <Route path="/levels" element={<Levels />} />
-            <Route path="/calculator" element={<Calculator />} />
-            <Route path="/login" element={<Login />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </ChakraProvider>
-  );
+    return (
+        <ChakraProvider theme={theme}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<MainLayout />}>
+                        <Route path="" element={<Home />} />
+                        <Route path="/levels" element={<Levels />} />
+                        <Route path="/calculator" element={<Calculator />} />
+                        {/* ----> Add dynamic routing to the different levels <---- */}
+                        <Route path="/login" element={<Login />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </ChakraProvider>
+    );
 }
 
 export default App;

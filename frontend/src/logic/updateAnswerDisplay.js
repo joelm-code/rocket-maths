@@ -3,7 +3,7 @@ export default function updateAnswerDisplay(quiz, keyPress) {
 
     //first time the quiz is loaded
     if (newQuiz.answerDisplay === 'Ready') {
-        newQuiz.answerDisplay = [''];
+        newQuiz.answerDisplay = [];
     }
 
     //check for . reapeat and del
@@ -18,7 +18,7 @@ export default function updateAnswerDisplay(quiz, keyPress) {
         }
         case 'del': {
             //clear the answer
-            newQuiz.answerDisplay = [''];
+            newQuiz.answerDisplay = [];
             break;
         }
         default: {
