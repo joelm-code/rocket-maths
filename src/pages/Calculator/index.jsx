@@ -2,22 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Keypad from '../../components/Keypad';
 import logic from '../../logic/logic';
 
-import {
-    Flex,
-    useColorModeValue,
-    HStack,
-    VStack,
-    Text,
-    Spacer,
-    Fade,
-    Progress,
-    Switch,
-    Collapse,
-    useDisclosure,
-    Button,
-    Badge,
-    useBoolean
-} from '@chakra-ui/react';
+import { Flex, useColorModeValue, HStack, VStack, Text, Spacer, Fade, Progress, Switch, Collapse, useDisclosure, Button, Badge, useBoolean } from '@chakra-ui/react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
 
@@ -27,18 +12,27 @@ export default function CalculatorPage() {
     const [incorrect, setIncorrect] = useState(false);
 
     const [quiz, setQuiz] = useState({
+        level: '1',
+
+        skill: {
+            add: '0.1',
+            subtract: '2.1',
+            multiply: '1.9',
+            divide: '0.1'
+        },
+
+        question: ['5', '+', '3'],
+        answerCorrect: '8',
+        answerDisplay: 'Ready',
         totalSteps: 10,
+
         history: [
             {
                 stepNumber: 1,
                 question: [''],
                 answerCorrect: ''
             }
-        ],
-        question: ['5', '+', '3'],
-        answerCorrect: '8',
-        answerDisplay: 'Ready',
-        level: '1'
+        ]
     });
 
     function updateQuiz(keyPress) {
@@ -47,14 +41,12 @@ export default function CalculatorPage() {
 
         //check if a new quiz is created
         if (newQuiz.history.length !== quiz.history.length) {
-            console.log('new quiz is created now');
             setSuccess.on();
             setIncorrect(false);
             setTimeout(() => {
                 setQuiz(newQuiz);
             }, 800);
         } else if (quiz.answerDisplay.length >= quiz.answerCorrect.length) {
-            console.log('wrong answer');
             setIncorrect(true);
             setQuiz(newQuiz);
         } else {
