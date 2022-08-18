@@ -1,3 +1,5 @@
+import Lottie from 'lottie-react';
+import levelUp from '../../assets/lottie/level-up.json';
 import React, { useEffect, useState } from 'react';
 import Keypad from '../../components/Keypad';
 import logic from '../../logic/logic';
@@ -9,7 +11,7 @@ import { Link } from 'react-router-dom';
 export default function CalculatorPage() {
     const { isOpen, onToggle } = useDisclosure({ defaultIsOpen: true });
     const [success, setSuccess] = useBoolean();
-    const [incorrect, setIncorrect] = useState(false);
+    const [incorrect, setIncorrect] = useBoolean();
     const [levelDone, setLevelDone] = useBoolean();
     const [hint, setHint] = useBoolean();
 
@@ -59,17 +61,17 @@ export default function CalculatorPage() {
         //check if a new quiz is created
         else if (newQuiz.history.length !== quiz.history.length) {
             setSuccess.on();
-            setIncorrect(false);
+            setIncorrect.off();
             setHint.off();
             setTimeout(() => {
                 setQuiz(newQuiz);
             }, 800);
         } else if (quiz.answerDisplay.length >= quiz.answerCorrect.length) {
-            setIncorrect(true);
+            setIncorrect.on();
 
             setQuiz(newQuiz);
         } else {
-            setIncorrect(false);
+            setIncorrect.off();
             setHint.off();
             setQuiz(newQuiz);
         }
@@ -86,6 +88,7 @@ export default function CalculatorPage() {
     const levelCleared = levelDone;
 
     const answerTextColor = useColorModeValue(success && 'green.500', success && 'green.400');
+    const questionColor = useColorModeValue('gray.700', 'gray.300');
     const answerTextShadow = useColorModeValue('0px 0px 2px rgba(255,255,255,0.1)', '0px 0px 2px rgba(255,255,255,0.4)');
 
     /* 
@@ -103,6 +106,16 @@ export default function CalculatorPage() {
             onKeyDown={(event) => updateQuiz(event.key)}
         >
             <VStack minH={'80vh'}>
+                <HStack w="100%">
+                    {/* 
+                    // Combo badge --->  need to implement a combo tracker
+
+                    <Collapse in={true} animateOpacity>
+                        <Badge fontSize="0.6rem" rounded={'md'} variant="outline" p={1} colorScheme="pink">
+                            🚀 Combo x3
+                        </Badge>
+                    </Collapse> */}
+                </HStack>
                 {/* Progress Bar */}
                 {!levelCleared && (
                     <VStack>
@@ -124,7 +137,7 @@ export default function CalculatorPage() {
                                     Hint
                                 </Button>
                             </Collapse>
-                            <SlideFade color={answerTextColor} in={hint} offsetX="-20px" animateOpacity>
+                            <SlideFade color={answerTextColor} in={hint} offsetX="-20px" offsetY="0px" animateOpacity>
                                 <Text fontSize={'0.8rem'} fontWeight={'semibold'}>{`${quiz.answerCorrect}`}</Text>
                             </SlideFade>
                             <Spacer />
@@ -144,11 +157,13 @@ export default function CalculatorPage() {
 
                 <Spacer />
                 {/* Question */}
-                <Fade in transition={{ enter: { duration: 0.5, delay: 1 } }}>
-                    <Text fontSize={'5xl'} color={useColorModeValue('gray.700', 'gray.300')} textAlign="center">
-                        {levelCleared ? 'Congratulations Captain!' : quiz.question}
-                    </Text>
-                </Fade>
+                {!levelCleared && (
+                    <Fade in transition={{ enter: { duration: 0.5, delay: 1 } }}>
+                        <Text fontSize={'5xl'} color={questionColor} textAlign="center">
+                            {quiz.question}
+                        </Text>
+                    </Fade>
+                )}
                 {/* Answer */}
                 <Spacer />
                 {!levelCleared && (
@@ -159,12 +174,12 @@ export default function CalculatorPage() {
                     </Fade>
                 )}
 
+                {/* Can be turned into a modal if needed */}
                 {levelCleared && (
                     <Fade in={levelCleared} transition={{ enter: { duration: 1 } }}>
-                        <Text fontSize={'4xl'}>{`Level Up`}</Text>
-                        <Text align="center" fontSize={'7xl'}>
-                            🥳
-                        </Text>
+                        <Text align="center" fontWeight={'semibold'} fontSize={'3xl'}>{`Good Job, Captain! 👏`}</Text>
+                        <Lottie animationData={levelUp} loop={true} style={{ width: 300 }} />
+                        <Text align="center" fontSize={'xl'}>{`Level Complete`}</Text>
                     </Fade>
                 )}
                 <Spacer />
@@ -183,10 +198,9 @@ export default function CalculatorPage() {
                     <Fade in={levelCleared} transition={{ enter: { delay: 1, duration: 0.5 } }}>
                         <HStack rounded={'lg'} bg={'whiteAlpha.600'} boxShadow={'lg'} minW={'60'} p={3} gap={2}>
                             <Text color={'blackAlpha.800'} fontWeight={'semibold'}>
-                                Level Cleared
+                                {`Next Round`}
                             </Text>
                             <Spacer />
-
                             <Button rightIcon={<ArrowForwardIcon />} colorScheme="purple" variant="solid" onClick={handleUpgradeLevel}>
                                 Continue
                             </Button>

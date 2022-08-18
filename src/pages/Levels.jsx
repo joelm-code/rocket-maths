@@ -3,31 +3,12 @@ import timerMode from '../assets/mode-timer.svg';
 import pomodoroMode from '../assets/mode-pomodoro.svg';
 import extremeMode from '../assets/mode-extreme.svg';
 
-import {
-    Flex,
-    Stack,
-    Heading,
-    Text,
-    useColorModeValue,
-    Fade,
-    Wrap,
-    WrapItem,
-    HStack,
-    CircularProgress,
-    CircularProgressLabel,
-    Spacer,
-    Image
-} from '@chakra-ui/react';
+import { Flex, Stack, Heading, Text, useColorModeValue, Fade, Wrap, WrapItem, HStack, CircularProgress, CircularProgressLabel, Spacer, Image } from '@chakra-ui/react';
 import Card from '../components/Card';
 
 export default function SimpleCard() {
     return (
-        <Flex
-            minH="calc(100vh - 3.5rem)"
-            align={'center'}
-            justify={'center'}
-            bgGradient={useColorModeValue('linear(to-br, #faaca8,#ddd6f3)', 'linear(to-br, #c33764,#1d2671)')}
-        >
+        <Flex minH="calc(100vh - 3.5rem)" align={'center'} justify={'center'} bgGradient={useColorModeValue('linear(to-br, #faaca8,#ddd6f3)', 'linear(to-br, #c33764,#1d2671)')}>
             <Stack spacing={8} mx={'auto'} py={12} px={6}>
                 <Stack align={'center'}>
                     <Heading textAlign="center" fontSize={'4xl'}>
@@ -82,7 +63,7 @@ export default function SimpleCard() {
                     </WrapItem>
                     <WrapItem>
                         <Fade in={true} transition={{ enter: { duration: 3, delay: 0.75 } }}>
-                            <Card title="Exteme" action="Locked" path="/calculator" disableAction>
+                            <Card title="Extreme" action="Locked" path="/calculator" disableAction>
                                 <Image h={'12rem'} src={extremeMode} />
                                 <HStack>
                                     <Text maxW={'xs'}>No distactions, no mistakes. Do you have what it takes to be the best?</Text>
