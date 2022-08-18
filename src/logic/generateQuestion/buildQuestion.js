@@ -1,4 +1,4 @@
-import { level, skill } from './data';
+import { skill } from './data';
 
 //---> function that builds the question based on the operator and skill stage
 const buildQuestion = (operator, currentSkill) => {

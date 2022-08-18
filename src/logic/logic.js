@@ -58,6 +58,10 @@ export default function logic(quiz, keyPress) {
 
             //-> 7. Clear the answerDisplay
             newQuiz.answerDisplay = [];
+
+            // update the combo
+            newQuiz.combo.status = true;
+            newQuiz.combo.mulitplier++;
         }
         //  ---> 8. Return the newQuiz back
         return { ...newQuiz };

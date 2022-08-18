@@ -10,7 +10,7 @@ export const generateQuestion = (quiz) => {
     const newQuiz = { ...quiz };
     // Get the values of current skill and level
     const currentLevel = Math.ceil(newQuiz.level);
-    const currentSkill = Math.ceil(newQuiz.skill);
+    //const currentSkill = Math.ceil(newQuiz.skill);
 
     console.log(currentLevel);
 

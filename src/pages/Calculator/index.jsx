@@ -1,12 +1,11 @@
 import Lottie from 'lottie-react';
 import levelUp from '../../assets/lottie/level-up.json';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Keypad from '../../components/Keypad';
 import logic from '../../logic/logic';
 
 import { Flex, useColorModeValue, HStack, VStack, Text, Spacer, Fade, Progress, Switch, Collapse, useDisclosure, Button, Badge, useBoolean, SlideFade } from '@chakra-ui/react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
-import { Link } from 'react-router-dom';
 
 export default function CalculatorPage() {
     const { isOpen, onToggle } = useDisclosure({ defaultIsOpen: true });
@@ -14,6 +13,7 @@ export default function CalculatorPage() {
     const [incorrect, setIncorrect] = useBoolean();
     const [levelDone, setLevelDone] = useBoolean();
     const [hint, setHint] = useBoolean();
+    const inputRef = useRef(null);
 
     const [quiz, setQuiz] = useState({
         level: '1',
@@ -30,6 +30,11 @@ export default function CalculatorPage() {
             subtract: false,
             multiply: false,
             divide: false
+        },
+
+        combo: {
+            status: false,
+            mulitplier: 0
         },
 
         question: ['5', '+', '3'],
@@ -52,7 +57,8 @@ export default function CalculatorPage() {
 
         console.log(`
         newQuiz level ${newQuiz.level}
-        quizlevel: ${quiz.level}`);
+        quizlevel: ${quiz.level}
+        quizcombo: ${quiz.combo.mulitplier}`);
 
         if (newQuiz.level !== quiz.level) {
             setLevelDone.on();
@@ -68,7 +74,9 @@ export default function CalculatorPage() {
             }, 800);
         } else if (quiz.answerDisplay.length >= quiz.answerCorrect.length) {
             setIncorrect.on();
-
+            //reset the combo mulitplier
+            newQuiz.combo.status = false;
+            newQuiz.combo.mulitplier = 0;
             setQuiz(newQuiz);
         } else {
             setIncorrect.off();
@@ -82,7 +90,15 @@ export default function CalculatorPage() {
         updateQuiz();
     };
 
-    useEffect(() => setSuccess.off(), [quiz.history]);
+    //
+    useEffect(() => {
+        setSuccess.off();
+    }, [quiz.history]);
+
+    //set focus back to the main flex div so that the keyboard input is automatically detected
+    useEffect(() => {
+        inputRef.current.focus();
+    }, [quiz]);
 
     const progress = (quiz.history.length / quiz.totalSteps) * 100;
     const levelCleared = levelDone;
@@ -103,18 +119,19 @@ export default function CalculatorPage() {
             justify={'center'}
             bgGradient={useColorModeValue('linear(to-br, #faaca8,#ddd6f3)', 'linear(to-br, #c33764,#1d2671)')}
             tabIndex={0}
+            ref={inputRef}
             onKeyDown={(event) => updateQuiz(event.key)}
         >
             <VStack minH={'80vh'}>
                 <HStack w="100%">
-                    {/* 
-                    // Combo badge --->  need to implement a combo tracker
-
-                    <Collapse in={true} animateOpacity>
-                        <Badge fontSize="0.6rem" rounded={'md'} variant="outline" p={1} colorScheme="pink">
-                            🚀 Combo x3
-                        </Badge>
-                    </Collapse> */}
+                    {/* // Combo badge ---> need to implement a combo tracker */}
+                    {!levelCleared && (
+                        <Collapse in={quiz.combo.mulitplier >= 3} animateOpacity>
+                            <Badge fontSize="0.6rem" rounded={'md'} variant="outline" p={1} colorScheme="pink">
+                                {`🚀 Combo x${quiz.combo.mulitplier}`}
+                            </Badge>
+                        </Collapse>
+                    )}
                 </HStack>
                 {/* Progress Bar */}
                 {!levelCleared && (
