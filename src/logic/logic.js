@@ -1,13 +1,12 @@
 import updateAnswerDisplay from './updateLogic/updateAnswerDisplay';
-import generateQuestion from './generateQuestion/index';
+import { generateQuestion } from './generateQuestion/generateQuestion';
 import updateHistory from './updateLogic/updateHistory';
-import { skill, level } from './generateQuestion/LevelAndSkill';
 
 export default function logic(quiz, keyPress) {
-    console.log('Skill: ', skill);
-    console.log('Level: ', level);
-
     /* 
+
+        [ ]  !!! Bug -> need to add provision for - answer as well
+
         Intializing newQuiz to be a new object that will be passed around
         to different functions in the logic to be manipulated
         !!! This assignment might not be correct figure out the correct way to do this 
@@ -53,6 +52,8 @@ export default function logic(quiz, keyPress) {
             newQuiz = updateHistory(newQuiz);
 
             //-> 6. Build a new question and answer
+            // just needs one new question based on the current level and skill
+            // desired output -> updates 3 values in quiz { question, answerCorrect, skill }
             newQuiz = generateQuestion(newQuiz);
 
             //-> 7. Clear the answerDisplay

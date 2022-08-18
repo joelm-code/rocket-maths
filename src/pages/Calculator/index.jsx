@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Keypad from '../../components/Keypad';
 import logic from '../../logic/logic';
 
-import { Flex, useColorModeValue, HStack, VStack, Text, Spacer, Fade, Progress, Switch, Collapse, useDisclosure, Button, Badge, useBoolean } from '@chakra-ui/react';
+import { Flex, useColorModeValue, HStack, VStack, Text, Spacer, Fade, Progress, Switch, Collapse, useDisclosure, Button, Badge, useBoolean, SlideFade } from '@chakra-ui/react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
 
@@ -10,21 +10,30 @@ export default function CalculatorPage() {
     const { isOpen, onToggle } = useDisclosure({ defaultIsOpen: true });
     const [success, setSuccess] = useBoolean();
     const [incorrect, setIncorrect] = useState(false);
+    const [levelDone, setLevelDone] = useBoolean();
+    const [hint, setHint] = useBoolean();
 
     const [quiz, setQuiz] = useState({
         level: '1',
 
         skill: {
-            add: '0.1',
-            subtract: '2.1',
-            multiply: '1.9',
+            add: '0.8',
+            subtract: '0.8',
+            multiply: '0.8',
             divide: '0.1'
+        },
+
+        skillStatus: {
+            add: false,
+            subtract: false,
+            multiply: false,
+            divide: false
         },
 
         question: ['5', '+', '3'],
         answerCorrect: '8',
         answerDisplay: 'Ready',
-        totalSteps: 10,
+        totalSteps: 100,
 
         history: [
             {
@@ -39,28 +48,50 @@ export default function CalculatorPage() {
         // new quiz is created
         const newQuiz = logic(quiz, keyPress);
 
+        console.log(`
+        newQuiz level ${newQuiz.level}
+        quizlevel: ${quiz.level}`);
+
+        if (newQuiz.level !== quiz.level) {
+            setLevelDone.on();
+            setQuiz(newQuiz);
+        }
         //check if a new quiz is created
-        if (newQuiz.history.length !== quiz.history.length) {
+        else if (newQuiz.history.length !== quiz.history.length) {
             setSuccess.on();
             setIncorrect(false);
+            setHint.off();
             setTimeout(() => {
                 setQuiz(newQuiz);
             }, 800);
         } else if (quiz.answerDisplay.length >= quiz.answerCorrect.length) {
             setIncorrect(true);
+
             setQuiz(newQuiz);
         } else {
             setIncorrect(false);
+            setHint.off();
             setQuiz(newQuiz);
         }
     }
 
+    const handleUpgradeLevel = () => {
+        setLevelDone.off();
+        updateQuiz();
+    };
+
     useEffect(() => setSuccess.off(), [quiz.history]);
 
     const progress = (quiz.history.length / quiz.totalSteps) * 100;
-    const levelCleared = quiz.history.length >= quiz.totalSteps;
+    const levelCleared = levelDone;
+
     const answerTextColor = useColorModeValue(success && 'green.500', success && 'green.400');
     const answerTextShadow = useColorModeValue('0px 0px 2px rgba(255,255,255,0.1)', '0px 0px 2px rgba(255,255,255,0.4)');
+
+    /* 
+        !!! New Feature 
+        -> If the level is cleared
+     */
 
     return (
         <Flex
@@ -75,22 +106,39 @@ export default function CalculatorPage() {
                 {/* Progress Bar */}
                 {!levelCleared && (
                     <VStack>
-                        <HStack rounded={'lg'} bg={'whiteAlpha.700'} boxShadow={'lg'} minW={'60'} p={3} gap={2}>
-                            <Text fontWeight={'semibold'} fontSize={'xs'} color={'gray.700'}>
-                                {`${quiz.history.length} of ${quiz.totalSteps}`}
-                            </Text>
+                        <VStack rounded={'lg'} bg={'whiteAlpha.700'} boxShadow={'lg'} minW={'60'} p={3} gap={2}>
+                            <HStack w={'100%'} justifyContent={'space-between'}>
+                                <Text fontWeight={'semibold'} fontSize={'xs'} color={'gray.700'}>
+                                    {`Level ${quiz.level}`}
+                                </Text>
+
+                                <Text fontWeight={'semibold'} fontSize={'xs'} color={'gray.700'}>
+                                    {`${quiz.history.length} of ${quiz.totalSteps}`}
+                                </Text>
+                            </HStack>
                             <Progress w={56} size="sm" colorScheme={success ? 'green' : 'pink'} value={progress} hasStripe isAnimated />
+                        </VStack>
+                        <HStack w={'100%'}>
+                            <Collapse in={incorrect} animateOpacity>
+                                <Button size={'xs'} fontSize="0.6rem" rounded={'md'} onClick={() => setHint.toggle()}>
+                                    Hint
+                                </Button>
+                            </Collapse>
+                            <SlideFade color={answerTextColor} in={hint} offsetX="-20px" animateOpacity>
+                                <Text fontSize={'0.8rem'} fontWeight={'semibold'}>{`${quiz.answerCorrect}`}</Text>
+                            </SlideFade>
+                            <Spacer />
+                            <Collapse in={incorrect} animateOpacity>
+                                <Badge fontSize="0.6rem" rounded={'md'} variant="subtle" p={1} colorScheme="red">
+                                    🚫 Incorrect
+                                </Badge>
+                            </Collapse>
+                            <Collapse in={success} animateOpacity>
+                                <Badge fontSize="0.6rem" rounded={'md'} variant="subtle" p={1} colorScheme="green">
+                                    ✅ Correct
+                                </Badge>
+                            </Collapse>
                         </HStack>
-                        <Collapse in={success} animateOpacity>
-                            <Badge rounded={'md'} variant="subtle" p={1} colorScheme="green">
-                                ✅ Correct
-                            </Badge>
-                        </Collapse>
-                        <Collapse in={incorrect} animateOpacity>
-                            <Badge rounded={'md'} variant="subtle" p={1} colorScheme="red">
-                                🚫 Incorrect
-                            </Badge>
-                        </Collapse>
                     </VStack>
                 )}
 
@@ -113,7 +161,10 @@ export default function CalculatorPage() {
 
                 {levelCleared && (
                     <Fade in={levelCleared} transition={{ enter: { duration: 1 } }}>
-                        <Text fontSize={'7xl'}>🥳</Text>
+                        <Text fontSize={'4xl'}>{`Level Up`}</Text>
+                        <Text align="center" fontSize={'7xl'}>
+                            🥳
+                        </Text>
                     </Fade>
                 )}
                 <Spacer />
@@ -135,11 +186,10 @@ export default function CalculatorPage() {
                                 Level Cleared
                             </Text>
                             <Spacer />
-                            <Link to="../levels">
-                                <Button rightIcon={<ArrowForwardIcon />} colorScheme="purple" variant="solid">
-                                    Next Level
-                                </Button>
-                            </Link>
+
+                            <Button rightIcon={<ArrowForwardIcon />} colorScheme="purple" variant="solid" onClick={handleUpgradeLevel}>
+                                Continue
+                            </Button>
                         </HStack>
                     </Fade>
                 )}

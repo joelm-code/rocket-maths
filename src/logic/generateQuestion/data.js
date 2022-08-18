@@ -62,61 +62,61 @@ export const level = {
     1: {
         add: { min: 1, max: 2 },
         subtract: { min: 1, max: 1 },
-        mulitply: { min: 1, max: 1 },
+        multiply: { min: 1, max: 1 },
         divide: { min: 0, max: 0 }
     },
     2: {
         add: { min: 3, max: 3 },
         subtract: { min: 1, max: 2 },
-        mulitply: { min: 2, max: 2 },
+        multiply: { min: 2, max: 2 },
         divide: { min: 0, max: 0 }
     },
     3: {
         add: { min: 4, max: 4 },
         subtract: { min: 3, max: 4 },
-        mulitply: { min: 3, max: 3 },
+        multiply: { min: 3, max: 3 },
         divide: { min: 1, max: 2 }
     },
     4: {
         add: { min: 5, max: 5 },
         subtract: { min: 5, max: 5 },
-        mulitply: { min: 4, max: 4 },
+        multiply: { min: 4, max: 4 },
         divide: { min: 3, max: 4 }
     },
     5: {
         add: { min: 6, max: 6 },
         subtract: { min: 6, max: 7 },
-        mulitply: { min: 5, max: 5 },
+        multiply: { min: 5, max: 5 },
         divide: { min: 5, max: 5 }
     },
     6: {
         add: { min: 7, max: 8 },
         subtract: { min: 8, max: 8 },
-        mulitply: { min: 6, max: 6 },
+        multiply: { min: 6, max: 6 },
         divide: { min: 6, max: 6 }
     },
     7: {
         add: { min: 9, max: 10 },
         subtract: { min: 9, max: 10 },
-        mulitply: { min: 7, max: 7 },
+        multiply: { min: 7, max: 7 },
         divide: { min: 7, max: 7 }
     },
     8: {
         add: { min: 9, max: 10 },
         subtract: { min: 9, max: 10 },
-        mulitply: { min: 8, max: 8 },
+        multiply: { min: 8, max: 8 },
         divide: { min: 8, max: 8 }
     },
     9: {
         add: { min: 0, max: 0 },
         subtract: { min: 0, max: 0 },
-        mulitply: { min: 9, max: 5 },
+        multiply: { min: 9, max: 5 },
         divide: { min: 9, max: 9 }
     },
     10: {
         add: { min: 0, max: 0 },
         subtract: { min: 0, max: 0 },
-        mulitply: { min: 10, max: 10 },
+        multiply: { min: 10, max: 10 },
         divide: { min: 10, max: 10 }
     }
 };
