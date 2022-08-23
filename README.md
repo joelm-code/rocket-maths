@@ -1,5 +1,5 @@
 <div align="center">
-<a href="https://rocket-maths.com/"><img alt="Astronaut from Rocket Maths" width="680px" src='src/assets/rocket-maths-readme-cover.png'></a>
+<a href="https://rocket-maths.com/"><img alt="Astronaut from Rocket Maths" width="680px" src='src/assets/images/rocket-maths-readme-cover.png'></a>
 </div>
 
 <h1 align="center">🚀 Rocket Maths</h1>

@@ -19,7 +19,7 @@ export default function Keypad(props) {
 
     const buildButton = keypadButtons.map((keypadButton) => {
         return (
-            <GridItem w={20} h={20} justifySelf={'center'} key={keypadButton.id}>
+            <GridItem w={'100%'} h={'100%'} justifySelf={'center'} key={keypadButton.id}>
                 <Button
                     h="100%"
                     w="100%"
@@ -39,7 +39,12 @@ export default function Keypad(props) {
 
     return (
         <VStack>
-            <Grid templateColumns="repeat(3,1fr)" gap={1}>
+            <Grid
+                templateColumns="repeat(3,1fr)"
+                gap={1}
+                width={['90vw', '90vw', 'md', 'xs']}
+                height={['40vh']}
+            >
                 {buildButton}
             </Grid>
         </VStack>

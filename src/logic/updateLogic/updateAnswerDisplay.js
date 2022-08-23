@@ -3,7 +3,7 @@ export default function updateAnswerDisplay(quiz, keyPress) {
 
     //Ready is the text on display when the app is first loaded
     // !!! Need to change this to something better
-    if (newQuiz.answerDisplay === 'Ready') {
+    if (newQuiz.answerDisplay === 'Ready?') {
         newQuiz.answerDisplay = [];
     }
 
