@@ -6,6 +6,7 @@ import Calculator from './pages/Calculator';
 import MainLayout from './layout/MainLayout';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ChakraProvider, theme } from '@chakra-ui/react';
+import Learn from './pages/Learn';
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                         <Route path="" element={<Home />} />
                         <Route path="/levels" element={<Levels />} />
                         <Route path="/calculator" element={<Calculator />} />
+                        <Route path="/learn" element={<Learn />} />
                         {/* ----> Add dynamic routing to the different levels <---- */}
                         <Route path="/login" element={<Login />} />
                     </Route>

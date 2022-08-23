@@ -1,7 +1,7 @@
-import zenMode from '../assets/mode-zen.svg';
-import timerMode from '../assets/mode-timer.svg';
-import pomodoroMode from '../assets/mode-pomodoro.svg';
-import extremeMode from '../assets/mode-extreme.svg';
+import zenMode from '../assets/images/mode-zen.svg';
+import timerMode from '../assets/images/mode-timer.svg';
+import pomodoroMode from '../assets/images/mode-pomodoro.svg';
+import extremeMode from '../assets/images/mode-extreme.svg';
 
 import { Flex, Stack, Heading, Text, useColorModeValue, Fade, Wrap, WrapItem, HStack, CircularProgress, CircularProgressLabel, Spacer, Image } from '@chakra-ui/react';
 import Card from '../components/Card';
@@ -17,30 +17,16 @@ export default function SimpleCard() {
                     <Text fontSize={'lg'}>Select your game mode</Text>
                 </Stack>
 
-                <Wrap justify="center" maxW={'5xl'} spacing={4}>
+                <Wrap justify="center" maxW={'8xl'} spacing={4}>
                     <WrapItem>
                         <Fade in={true} transition={{ enter: { duration: 0.75 } }}>
                             <Card title="Zen" action="Begin" path="/calculator">
-                                <Image h={'12rem'} src={zenMode} />
+                                <Image w={'12rem'} h={'14rem'} src={zenMode} alignSelf="center" />
                                 <HStack>
-                                    <Text maxW={'xs'}>Soothing play with numbers take your time, relax, breathe. It's just math!</Text>
+                                    <Text w={'14em'}>Soothing play with numbers take your time, relax, breathe. It's just math!</Text>
                                     <Spacer />
                                     <CircularProgress value={59} size="40px" thickness={10} color="purple.400">
                                         <CircularProgressLabel>40%</CircularProgressLabel>
-                                    </CircularProgress>
-                                </HStack>
-                            </Card>
-                        </Fade>
-                    </WrapItem>
-                    <WrapItem>
-                        <Fade in={true} transition={{ enter: { duration: 1.5, delay: 0.25 } }}>
-                            <Card title="Focus" action="Begin" path="/calculator">
-                                <Image h={'12rem'} src={pomodoroMode} />
-                                <HStack>
-                                    <Text maxW={'xs'}>It's time to beat the clock one sum at a time! You only have 3 lives</Text>
-                                    <Spacer />
-                                    <CircularProgress value={30} size="40px" thickness={10} color="purple.400">
-                                        <CircularProgressLabel>30%</CircularProgressLabel>
                                     </CircularProgress>
                                 </HStack>
                             </Card>
@@ -50,9 +36,9 @@ export default function SimpleCard() {
                     <WrapItem>
                         <Fade in={true} transition={{ enter: { duration: 2.25, delay: 0.5 } }}>
                             <Card title="Pomodoro" action="Locked" path="/calculator" disableAction>
-                                <Image h={'12rem'} src={timerMode} />
+                                <Image w={'12rem'} h={'14rem'} src={timerMode} alignSelf="center" />
                                 <HStack>
-                                    <Text maxW={'xs'}>Want more focused practice? Do a pomodoro style timed practice.</Text>
+                                    <Text w={'14em'}>Want more focused practice? Do a pomodoro style timed practice.</Text>
                                     <Spacer />
                                     <CircularProgress value={10} size="40px" thickness={10} color="purple.400">
                                         <CircularProgressLabel>10%</CircularProgressLabel>
@@ -64,9 +50,9 @@ export default function SimpleCard() {
                     <WrapItem>
                         <Fade in={true} transition={{ enter: { duration: 3, delay: 0.75 } }}>
                             <Card title="Extreme" action="Locked" path="/calculator" disableAction>
-                                <Image h={'12rem'} src={extremeMode} />
+                                <Image w={'12rem'} h={'14rem'} src={extremeMode} alignSelf="center" />
                                 <HStack>
-                                    <Text maxW={'xs'}>No distactions, no mistakes. Do you have what it takes to be the best?</Text>
+                                    <Text w={'14em'}>No distactions, no mistakes. Do you have what it takes to be the best?</Text>
                                     <Spacer />
                                     <CircularProgress value={0} size="40px" thickness={10} color="purple.400">
                                         <CircularProgressLabel>0%</CircularProgressLabel>

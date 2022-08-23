@@ -1,5 +1,5 @@
-import soloPlay from '../assets/play-solo.svg';
-import teamPlay from '../assets/play-team.svg';
+import soloPlay from '../assets/images/play-solo.svg';
+import teamPlay from '../assets/images/play-team.svg';
 
 import { Flex, Stack, Heading, Text, useColorModeValue, Fade, Image, Wrap, WrapItem } from '@chakra-ui/react';
 import Card from '../components/Card';
@@ -17,9 +17,9 @@ export default function SimpleCard() {
                 <Wrap justify="center" maxW={'5xl'} spacing={4}>
                     <WrapItem>
                         <Fade in transition={{ enter: { duration: 0.5 } }}>
-                            <Card title="Solo Adventure" action="Begin" path="/levels">
+                            <Card title="Play" action="Play Now" path="/levels">
                                 <Stack maxW={'xs'}>
-                                    <Image h={'20rem'} src={soloPlay} />
+                                    <Image w={'xs'} h={'20rem'} src={soloPlay} />
                                     <Text maxW={'xs'}>Sharpen your skills and become a legend</Text>
                                 </Stack>
                             </Card>
@@ -27,10 +27,10 @@ export default function SimpleCard() {
                     </WrapItem>
                     <WrapItem>
                         <Fade in transition={{ enter: { duration: 1 } }}>
-                            <Card title="Team Adventure" action="Coming Soon" path="/" disableAction>
+                            <Card title="Learn" action="Learn Now" path="/learn">
                                 <Stack maxW={'xs'}>
-                                    <Image h={'20rem'} src={teamPlay} />
-                                    <Text maxW={'xs'}>Build your team and conqure the world</Text>
+                                    <Image w={'xs'} h={'20rem'} src={teamPlay} />
+                                    <Text maxW={'xs'}>A fun way to learn maths</Text>
                                 </Stack>
                             </Card>
                         </Fade>
