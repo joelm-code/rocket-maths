@@ -37,9 +37,9 @@ export default function Calculator() {
         level: '1',
 
         skill: {
-            add: '0.8',
-            subtract: '0.8',
-            multiply: '0.8',
+            add: '0.1',
+            subtract: '0.1',
+            multiply: '0.1',
             divide: '0.1'
         },
 

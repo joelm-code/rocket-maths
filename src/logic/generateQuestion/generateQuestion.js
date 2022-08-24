@@ -44,7 +44,7 @@ export const generateQuestion = (quiz) => {
     const newSkill = skill[operator].stage[generatedStage];
 
     //this need to be dynamic
-    const difficultyLevel = Math.random();
+    const difficultyLevel = (Math.random() * (currentLevel * generatedStage)) / 10;
     //const difficultyLevel = Math.round(Math.random() * 10) / (40 * generatedStage * currentLevel);
 
     console.log(`-- Generate Question --
@@ -73,7 +73,10 @@ export const generateQuestion = (quiz) => {
     // Assign all the values generated to newQuiz
     newQuiz.question = [q1, symbol[operator], q2];
     newQuiz.answerCorrect = `${a}`;
-    newQuiz.skill[operator] = Number(newQuiz.skill[operator]) + Number(difficultyLevel) > maxStage ? maxStage : Number(newQuiz.skill[operator]) + Number(difficultyLevel);
+    newQuiz.skill[operator] =
+        Number(newQuiz.skill[operator]) + Number(difficultyLevel) > maxStage
+            ? maxStage
+            : Number(newQuiz.skill[operator]) + Number(difficultyLevel);
     //console.log('New Quiz: ', newQuiz);
 
     //   updgrade skill Status
